@@ -2,7 +2,7 @@
 
 ## Installation:
 
-Please make sure you have the PHP `pcov` extension installed
+Please make sure you have the PHP `pcov` extension installed for code coverage
 
 ### PHP 7.4 for macOS
 ```bash
@@ -17,7 +17,7 @@ sudo pecl install pcov
 sudo apt install software-properties-common
 sudo add-apt-repository ppa:ondrej/php -y
 sudo apt-get update
-sudo apt-get install composer php7.3-cli php7.3-dev php7.3-xml php7.3-mbstring php7.3-curl php7.3-pcov php7.3-gd php7.3-sqlite3 sqlite3
+sudo apt-get install composer php7.3-cli php7.4-dev php7.4-xml php7.4-mbstring php7.4-curl php7.4-pcov php7.4-gd php7.4-sqlite3 sqlite3
 sudo pecl install pcov
 ```
 
@@ -55,10 +55,13 @@ $ php artisan test
 ```
 
 ## Generating code coverage reports:
+
+To help you understand how much unit test coverage is needed for the code written, you can use the following composer command:
+
 ``` bash
 $ composer coverage
 ```
-This will generate HTML coverage reports under `tests/code-coverage-report` which can be viewed locally in your web browser.
+This will generate HTML coverage reports under `tests/code-coverage-report` which can be viewed locally in your web browser by opening `tests/code-coverage-report/index.html`.
 
 ## Automatically fix code style using `php-cs-fixer`:
 ``` bash
@@ -75,6 +78,10 @@ $ composer fixer
 ## Laravel Telescope (debugging API):
 
 This is available from the following URL: [http://127.0.0.1:8000/telescope](http://127.0.0.1:8000/telescope)
+
+## Postman:
+
+Public collection URL: [https://www.getpostman.com/collections/c95a7513c0c90c58ca9e](https://www.getpostman.com/collections/c95a7513c0c90c58ca9e)
 
 When selecting the collection you need to assign the following environment to it: `4C Platform Developer Test`. This allows automatic `base_url` and bearer `token` to be set.
 
