@@ -17,7 +17,7 @@ sudo pecl install pcov
 sudo apt install software-properties-common
 sudo add-apt-repository ppa:ondrej/php -y
 sudo apt-get update
-sudo apt-get install composer php7.3-cli php7.4-dev php7.4-xml php7.4-mbstring php7.4-curl php7.4-pcov php7.4-gd php7.4-sqlite3 sqlite3
+sudo apt-get install composer php7.4-cli php7.4-dev php7.4-xml php7.4-mbstring php7.4-curl php7.4-pcov php7.4-gd php7.4-sqlite3 sqlite3
 sudo pecl install pcov
 ```
 
