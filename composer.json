@@ -70,6 +70,8 @@
         ],
         "post-install-cmd": [
             "@run-ide-helper",
+            "@post-root-package-install",
+            "@php artisan key:generate --ansi",
             "@php artisan telescope:publish --ansi"
         ],
         "post-update-cmd": [
