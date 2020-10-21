@@ -47,16 +47,6 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * @var array
-     */
-    private static array $messages = [
-        'VALIDATION_FAILED' => 'VALIDATION_FAILED',
-        'NOT_FOUND'         => 'NOT_FOUND',
-        'ACCESS_DENIED'     => 'ACCESS_DENIED',
-        'INTERNAL_ERROR'    => 'INTERNAL_ERROR',
-    ];
-
-    /**
      * @var string
      */
     private string $message;
@@ -119,29 +109,29 @@ class Handler extends ExceptionHandler
     {
         switch (get_class($e)) {
             case ModelNotFoundException::class:
-                $this->message = self::$messages['NOT_FOUND'];
+                $this->message = ExceptionTypeEnum::NOT_FOUND;
                 $this->status = Response::HTTP_NOT_FOUND;
                 break;
 
             case ValidationException::class:
-                $this->message = self::$messages['VALIDATION_FAILED'];
+                $this->message = ExceptionTypeEnum::VALIDATION_FAILED;
                 $this->status = Response::HTTP_UNPROCESSABLE_ENTITY;
                 break;
 
             case AuthorizationException::class:
             case AuthenticationException::class:
             case HttpException::class:
-                $this->message = self::$messages['ACCESS_DENIED'];
+                $this->message = ExceptionTypeEnum::ACCESS_DENIED;
                 $this->status = Response::HTTP_FORBIDDEN;
                 break;
 
             case MethodNotAllowedHttpException::class:
-                $this->message = self::$messages['METHOD_NOT_ALLOWED'];
+                $this->message = ExceptionTypeEnum::METHOD_NOT_ALLOWED;
                 $this->status = Response::HTTP_METHOD_NOT_ALLOWED;
                 break;
 
             default:
-                $this->message = ($e->getMessage()) ?: self::$messages['INTERNAL_ERROR'];
+                $this->message = ($e->getMessage()) ?: ExceptionTypeEnum::INTERNAL_ERROR;
                 $this->status = Response::HTTP_INTERNAL_SERVER_ERROR;
         }
     }
