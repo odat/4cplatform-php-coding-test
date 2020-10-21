@@ -2,11 +2,7 @@
 
 namespace App\Http;
 
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest as BaseRequest;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Validation\ValidationException;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class Request
@@ -14,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
  * @package App\Http
  * @codeCoverageIgnore
  */
-class Request extends BaseRequest
+class Request extends FormRequest
 {
     /**
      * Determine if the current request is asking for JSON in return.
@@ -44,23 +40,5 @@ class Request extends BaseRequest
     public function authorize(): bool
     {
         return true;
-    }
-
-    /**
-     * Handle a failed validation attempt.
-     *
-     * @param  Validator           $validator
-     * @throws ValidationException
-     * @return void
-     */
-    protected function failedValidation(Validator $validator): void
-    {
-        $response = new JsonResponse([
-            'data'    => [],
-            'message' => 'The given data is invalid',
-            'errors'  => $validator->errors(),
-        ], Response::HTTP_UNPROCESSABLE_ENTITY);
-
-        throw new ValidationException($validator, $response);
     }
 }
