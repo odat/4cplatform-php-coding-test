@@ -40,7 +40,7 @@ trait CreatesApplication
 
             $app->make(Kernel::class)->bootstrap();
 
-            Artisan::call('migrate --seed');
+            Artisan::call('migrate:fresh --seed');
             Artisan::call(
                 'db:seed',
                 ['--class' => 'TestDataSeeder']
