@@ -3,7 +3,7 @@
 namespace Fcp\AnimalBreedsSearch\Tests;
 
 use Fcp\AnimalBreedsSearch\AnimalBreedsSearchServiceProvider;
-use Fcp\AnimalBreedsSearch\Facades\AnimalBreedsSearch;
+use Fcp\AnimalBreedsSearch\Facades\AnimalBreedsSearchFacades;
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 

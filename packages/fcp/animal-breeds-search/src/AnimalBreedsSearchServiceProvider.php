@@ -22,6 +22,9 @@ class AnimalBreedsSearchServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+
+        $this->loadRoutesFrom(__DIR__ .  '/routes/api.php');
+
     }
 
     /**
@@ -34,6 +37,9 @@ class AnimalBreedsSearchServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/animal-breeds-search.php', 'animal-breeds-search');
 
         // Register the animal breed search service here
+        $this->app->bind('AnimalBreedsSearch', function ($app) {
+            return new AnimalBreedsSearch();
+        });
     }
 
     /**

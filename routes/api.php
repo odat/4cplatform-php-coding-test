@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Api\{
     AuthController,
-    UserController
+    UserController,
 };
+use App\Http\Controllers\BreedController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,6 @@ Route::post('login', [AuthController::class, 'login'])->name('user.login');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [UserController::class, 'me'])->name('user.me');
+    Route::get('/breeds', [BreedController::class, 'index'])->name('getBreeds');
+    Route::get('/breeds/{id}', [BreedController::class, 'show'])->name('getBreed');
 });
